@@ -15,7 +15,8 @@
   "description": "Backend for 1kf",
   "main": "src/server.js",
   "scripts": {
-    "start": "node --env-file=.env src/server.js"
+    "start": "node --env-file=.env src/server.js",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -26,5 +27,9 @@
   "bugs": {
     "url": "https://github.com/Haskaris/1kf/issues"
   },
-  "homepage": "https://github.com/Haskaris/1kf#readme"
+  "homepage": "https://github.com/Haskaris/1kf#readme",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
+  }
 }
