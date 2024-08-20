@@ -12,7 +12,7 @@ class ProjectController {
       const { rows } = await db.query('INSERT INTO projects (name, description, start_date, end_date) VALUES ($1, $2, $3, $4) RETURNING *', [name, description, startDate, endDate]);
       res.status(201).send(rows[0]);
     } catch (error) {
-      res.status(500).send(error);
+      res.status(500).send(error.message);
     }
   }
 
@@ -21,7 +21,7 @@ class ProjectController {
       const { rows } = await db.query('SELECT * FROM projects');
       res.send(rows);
     } catch (error) {
-      res.status(500).send(error);
+      res.status(500).send(error.message);
     }
   }
 
@@ -33,7 +33,7 @@ class ProjectController {
       const { rows } = await db.query('UPDATE projects SET name = COALESCE($1, name), description = COALESCE($2, description), start_date = COALESCE($3, start_date), end_date = COALESCE($4, end_date) WHERE id = $5 RETURNING *', [name, description, startDate, endDate, id]);
       res.send(rows[0]);
     } catch (error) {
-      res.status(500).send(error);
+      res.status(500).send(error.message);
     }
   }
 
@@ -43,7 +43,7 @@ class ProjectController {
       await db.query('DELETE FROM projects WHERE id = $1', [id]);
       res.status(204).send();
     } catch (error) {
-      res.status(500).send(error);
+      res.status(500).send(error.message);
     }
   }
 }
