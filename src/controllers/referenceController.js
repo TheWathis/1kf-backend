@@ -15,7 +15,7 @@ class ReferenceController {
       );
       res.send(rows[0]);
     } catch (error) {
-      res.status(500).send(error);
+      res.status(500).send(error.message);
     }
   }
 
@@ -24,7 +24,7 @@ class ReferenceController {
       const { rows } = await db.query('SELECT * FROM references');
       res.send(rows);
     } catch (error) {
-      res.status(500).send(error);
+      res.status(500).send(error.message);
     }
   }
 
@@ -39,7 +39,7 @@ class ReferenceController {
       );
       res.send(rows[0]);
     } catch (error) {
-      res.status(500).send(error);
+      res.status(500).send(error.message);
     }
   }
 
@@ -50,7 +50,7 @@ class ReferenceController {
       await db.query('DELETE FROM job_references WHERE id = $1', [id]);
       res.status(204).send();
     } catch (error) {
-      res.status(500).send(error);
+      res.status(500).send(error.message);
     }
   }
 }
