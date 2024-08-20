@@ -17,7 +17,7 @@ class LanguageController {
       const { rows } = await db.query(query);
       res.status(201).send(rows[0]);
     } catch (error) {
-      res.status(500).send(error);
+      res.status(500).send(error.message);
     }
 
   }
@@ -27,7 +27,7 @@ class LanguageController {
       const { rows } = await db.query('SELECT * FROM languages');
       res.send(rows);
     } catch (error) {
-      res.status(500).send(error);
+      res.status(500).send(error.message);
     }
   }
 
@@ -44,7 +44,7 @@ class LanguageController {
       const { rows } = await db.query(query);
       res.send(rows[0]);
     } catch (error) {
-      res.status(500).send(error);
+      res.status(500).send(error.message);
     }
   }
 
@@ -55,7 +55,7 @@ class LanguageController {
       await db.query('DELETE FROM languages WHERE id = $1', [id]);
       res.status(204).send();
     } catch (error) {
-      res.status(500).send(error);
+      res.status(500).send(error.message);
     }
   }
 }
