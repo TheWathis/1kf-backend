@@ -10,7 +10,7 @@ class SkillController {
 
     try {
       const { rows } = await db.query('INSERT INTO skills (name) VALUES ($1) RETURNING *', [name]);
-      res.send(rows[0]);
+      res.status(201).send(rows[0]);
     } catch (error) {
       res.status(500).send(error.message);
     }

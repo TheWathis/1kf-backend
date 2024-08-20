@@ -3,8 +3,6 @@ const express = require('express');
 const WorkExperienceController = require('../src/controllers/workExperienceController');
 const db = require('../src/db');
 
-// workExperienceController.test.js
-
 jest.mock('../src/db');
 
 const app = express();

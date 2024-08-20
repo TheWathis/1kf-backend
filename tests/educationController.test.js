@@ -1,4 +1,3 @@
-// educationController.test.js
 const request = require('supertest');
 const express = require('express');
 const EducationController = require('../src/controllers/educationController');

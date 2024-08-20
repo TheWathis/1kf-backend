@@ -13,7 +13,7 @@ class ReferenceController {
         'INSERT INTO job_references (name, title, email, phone, address) VALUES ($1, $2, $3, $4, $5) RETURNING *',
         [name, title, email, phone, address]
       );
-      res.send(rows[0]);
+      res.status(201).send(rows[0]);
     } catch (error) {
       res.status(500).send(error.message);
     }

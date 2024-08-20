@@ -3,8 +3,6 @@ const express = require('express');
 const ReferenceController = require('../src/controllers/referenceController');
 const db = require('../src/db');
 
-// referenceController.test.js
-
 jest.mock('../src/db');
 
 const app = express();
@@ -23,7 +21,7 @@ describe('ReferenceController', () => {
     it('should create reference successfully', async () => {
       db.query.mockResolvedValue({ rows: [{ id: 1, name: 'John Doe', title: 'Manager', email: 'john@example.com', phone: '1234567890', address: '123 Main St' }] });
       const res = await request(app).post('/reference').send({ name: 'John Doe', title: 'Manager', email: 'john@example.com', phone: '1234567890', address: '123 Main St' });
-      expect(res.status).toBe(200);
+      expect(res.status).toBe(201);
       expect(res.body).toEqual({ id: 1, name: 'John Doe', title: 'Manager', email: 'john@example.com', phone: '1234567890', address: '123 Main St' });
     });
 

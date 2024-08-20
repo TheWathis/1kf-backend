@@ -19,7 +19,6 @@ class LanguageController {
     } catch (error) {
       res.status(500).send(error.message);
     }
-
   }
 
   async getAllLanguages(req, res) {

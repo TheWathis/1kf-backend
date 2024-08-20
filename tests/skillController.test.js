@@ -3,8 +3,6 @@ const express = require('express');
 const SkillController = require('../src/controllers/skillController');
 const db = require('../src/db');
 
-// skillController.test.js
-
 jest.mock('../src/db');
 
 const app = express();
@@ -23,7 +21,7 @@ describe('SkillController', () => {
     it('should create skill successfully', async () => {
       db.query.mockResolvedValue({ rows: [{ id: 1, name: 'Test Skill' }] });
       const res = await request(app).post('/skills').send({ name: 'Test Skill' });
-      expect(res.status).toBe(200);
+      expect(res.status).toBe(201);
       expect(res.body).toEqual({ id: 1, name: 'Test Skill' });
     });
 

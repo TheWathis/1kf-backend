@@ -3,8 +3,6 @@ const express = require('express');
 const ProjectController = require('../src/controllers/projectController');
 const db = require('../src/db');
 
-// projectController.test.js
-
 jest.mock('../src/db');
 
 const app = express();
