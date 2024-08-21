@@ -1,8 +1,11 @@
 const express = require('express');
+const path = require('path');
 
 // Express app creation
 const app = express()
 
+// Trust the proxy
+app.set('trust proxy', 1);
 app.use(express.json());
 
 
@@ -25,7 +28,6 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 
 
 // Routes import
-const defaultRoute = require('./routes/defaultRoute');
 const educationRoute = require('./routes/educationRoute');
 const hobbyRoute = require('./routes/hobbyRoute');
 const languageRoute = require('./routes/languageRoute');
@@ -34,7 +36,6 @@ const referenceRoute = require('./routes/referenceRoute');
 const skillRoute = require('./routes/skillRoute');
 const workExperienceRoute = require('./routes/workExperienceRoute');
 
-defaultRoute(app);
 educationRoute(app);
 hobbyRoute(app);
 languageRoute(app);
@@ -43,6 +44,10 @@ referenceRoute(app);
 skillRoute(app);
 workExperienceRoute(app);
 
+// Serve index.html for the root URL
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public', 'index.html'));
+});
 
 // Server start
 const PORT = process.env.PORT || 3000;
